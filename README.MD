@@ -79,7 +79,7 @@ A full-stack Airbnb clone built with the MERN stack (MongoDB, Express.js, React.
     # or
     yarn
 
-3. create frontend and backend .env file
+3. create both frontend and backend .env file
 
 4. Start the backend server:
     ```bash
