@@ -47,6 +47,7 @@ function BookingContext({children}) {
         
     }
     const cancelBooking = async (id) => {
+        console.log("Attempting to cancel booking for listing ID:", id)
         try {
             let result = await axios.delete( serverUrl + `/api/booking/cancel/${id}`,{withCredentials:true})
         await getCurrentUser()
@@ -56,8 +57,13 @@ function BookingContext({children}) {
 
             
         } catch (error) {
-            console.log(error)
-            toast.error(error.response.data.message)
+            console.log("Cancel booking error:", error)
+            if(error.response) {
+                console.log("Error response:", error.response.data)
+                toast.error(error.response.data.message)
+            } else {
+                toast.error("Failed to cancel booking")
+            }
         }
         
     }
@@ -68,7 +74,10 @@ function BookingContext({children}) {
         total,setTotal,
         night,setNight,
         bookingData,setBookingData,
-        handleBooking,cancelBooking,booking,setbooking
+        handleBooking,cancelBooking,booking,setbooking,
+        refreshBookings: () => {
+            // This will be used by MyBooking page to refresh
+        }
 
     }
   return (

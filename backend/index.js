@@ -8,6 +8,7 @@ import cors from "cors"
 import userRouter from "./routes/user.route.js"
 import listingRouter from "./routes/listing.route.js"
 import bookingRouter from "./routes/booking.route.js"
+import reviewRouter from "./routes/review.route.js"
 let port = process.env.PORT || 6000
 
 let app = express()
@@ -22,9 +23,10 @@ app.use("/api/auth", authRouter )
 app.use("/api/user", userRouter )
 app.use("/api/listing",listingRouter )
 app.use("/api/booking",bookingRouter )
+app.use("/api/review",reviewRouter )
 
 
-app.listen(port,()=>{
-    connectDb()
-    console.log("server started")
-})
+app.listen(port, () => {
+    connectDb();
+    console.log(`Server started on http://localhost:${port} 🌐`);
+});

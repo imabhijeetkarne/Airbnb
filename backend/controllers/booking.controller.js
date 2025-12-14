@@ -44,9 +44,6 @@ export const createBooking = async (req,res) => {
    }
     
 }
-
-
-
 export const cancelBooking = async (req,res) => {
     try {
         let {id} = req.params
@@ -64,9 +61,6 @@ export const cancelBooking = async (req,res) => {
     }
     
 }
-
-
-
 
 export const getMyBookings = async (req, res) => {
     try {

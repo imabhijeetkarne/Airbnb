@@ -91,7 +91,7 @@ function Nav() {
                             <div className='w-[100%] h-[1px] bg-[#c1c0c0]'></div>
                             <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer' onClick={()=>{navigate("/listingpage1");setShowpopup(false)}}>List your Home</li>
                             <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer'onClick={()=>{navigate("/mylisting");setShowpopup(false)}}>My Listing</li>
-                            <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer'  onClick={()=>{navigate("/mybooking");setShowpopup(false)}}>MY Booking</li>
+                            <li className='w-[100%] px-[15px] py-[10px] hover:bg-[#f4f3f3] cursor-pointer'  onClick={()=>{navigate("/mybooking");setShowpopup(false)}}>My Booking</li>
                         </ul>
 
                     </div>}

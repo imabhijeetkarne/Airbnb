@@ -5,32 +5,41 @@ import { userDataContext } from '../Context/UserContext';
 import Card from '../Component/Card';
 import axios from 'axios';
 import { authDataContext } from '../Context/AuthContext';
+import { bookingDataContext } from '../Context/BookingContext';
 
 function MyBooking() {
     const navigate = useNavigate();
     const { userData } = useContext(userDataContext);
     const { serverUrl } = useContext(authDataContext);
+    const { getCurrentUser } = useContext(userDataContext);
+    const { refreshBookings } = useContext(bookingDataContext);
     const [bookings, setBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchBookings = async () => {
-            try {
-                setLoading(true);
-                const response = await axios.get(`${serverUrl}/api/booking/mybookings`, {
-                    withCredentials: true
-                });
-                console.log('Bookings data:', response.data); // Debug log
-                setBookings(response.data);
-            } catch (err) {
-                console.error('Error fetching bookings:', err);
-                setError('Failed to load bookings. Please try again later.');
-            } finally {
-                setLoading(false);
-            }
-        };
+    const fetchBookings = async () => {
+        try {
+            setLoading(true);
+            const response = await axios.get(`${serverUrl}/api/booking/mybookings`, {
+                withCredentials: true
+            });
+            console.log('Bookings data:', response.data); // Debug log
+            setBookings(response.data);
+        } catch (err) {
+            console.error('Error fetching bookings:', err);
+            setError('Failed to load bookings. Please try again later.');
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    // Function to refresh bookings after cancellation
+    const refreshBookingsPage = async () => {
+        await getCurrentUser(); // Update user data
+        fetchBookings(); // Refresh bookings list
+    };
+
+    useEffect(() => {
         if (userData?._id) {
             fetchBookings();
         }
@@ -89,6 +98,7 @@ function MyBooking() {
                                 ratings={booking.listingId?.ratings || booking.ratings || booking.listing?.ratings || 0}
                                 isBooked={true}
                                 host={booking.listingId?.host || booking.host || booking.listing?.host}
+                                guest={userData?._id} // Current user is the guest for their own bookings
                             />
                         );
                     })

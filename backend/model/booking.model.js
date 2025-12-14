@@ -6,6 +6,7 @@ const bookingSchema = new mongoose.Schema({
         ref:"User",
         required:true
        },
+
        guest:{
           type:mongoose.Schema.Types.ObjectId,
           ref:"User",
@@ -13,7 +14,7 @@ const bookingSchema = new mongoose.Schema({
        },
        listing:{
           type:mongoose.Schema.Types.ObjectId,
-          ref:"Listing",
+          ref:"Listing", 
           required:true
        },
        status:{

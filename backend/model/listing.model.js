@@ -60,8 +60,15 @@ const listingSchema = new mongoose.Schema({
     isBooked:{
         type:Boolean,
         default:false
-    }
-
+    },
+    amenities: {
+        type: [String],
+        default: []
+    },
+    reviews:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'review'
+    }],
 
 },{timestamps:true})
 
