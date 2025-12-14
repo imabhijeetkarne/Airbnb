@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export const authDataContext = createContext();
 
 function AuthContext({ children }) {
-    const serverUrl = "http://localhost:8000";
+    const serverUrl = import.meta.env.VITE_BACKEND_URL;
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [user, setUser] = useState(null);

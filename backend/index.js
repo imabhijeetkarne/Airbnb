@@ -15,7 +15,7 @@ let app = express()
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
     credentials:true
 }))
 
@@ -24,7 +24,6 @@ app.use("/api/user", userRouter )
 app.use("/api/listing",listingRouter )
 app.use("/api/booking",bookingRouter )
 app.use("/api/review",reviewRouter )
-
 
 app.listen(port, () => {
     connectDb();
