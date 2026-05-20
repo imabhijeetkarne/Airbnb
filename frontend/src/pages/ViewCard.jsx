@@ -126,7 +126,7 @@ function ViewCard() {
                 toast.error("Session expired. Please login again.");
                 // Redirect to login after a short delay
                 setTimeout(() => {
-                    navigate("/login");
+                    navigate("/");
                 }, 1500);
             } else {
                 toast.error(error.message?.data?.message || "failed to update listing");
