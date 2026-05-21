@@ -16,6 +16,12 @@ export const createReview = async (req, res) => {
             return res.status(404).json({ message: "Listing not found" });
         }
 
+        if(listing.host.toString() === userId){
+            return res.status(403).json({
+                message : "Listing owner cannot write a review for their own listing"
+            })
+        }
+
         const existingReview = await Review.findOne({ user: userId, listing: listingId });
         if (existingReview) {
             return res.status(400).json({ message: "You have already reviewed this listing" });
