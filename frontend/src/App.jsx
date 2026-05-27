@@ -16,8 +16,6 @@ const MyListing = lazy(() => import('./pages/MyListing'));
 const ViewCard = lazy(() => import('./pages/ViewCard'));
 const MyBooking = lazy(() => import('./pages/MyBooking'));
 const Booked = lazy(() => import('./pages/Booked'));
-const Review = lazy(() => import('./pages/Review'));
-
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -109,14 +107,6 @@ function App() {
             element={
               <ProtectedRoute>
                 <Booked />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/reviews/:listingId"
-            element={
-              <ProtectedRoute>
-                <Review />
               </ProtectedRoute>
             }
           />

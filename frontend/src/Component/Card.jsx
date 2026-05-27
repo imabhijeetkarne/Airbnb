@@ -24,10 +24,6 @@ function Card({ title, landMark, image1, image2, image3, rent, city, id, ratings
         }
     }
 
-    const handleReviewsClick = (e) => {
-        e.stopPropagation()
-        navigate(`/reviews/${id}`)
-    }
     return (
         <div className='w-[330px] max-w-[85%] h-[460px] flex items-start justify-start flex-col rounded-lg cursor-pointer relative z-[10] ' onClick={() => !isBooked ? handleClick() : null}>
 
@@ -52,14 +48,6 @@ function Card({ title, landMark, image1, image2, image3, rent, city, id, ratings
                 <span className='text-[15px] w-[80%] text-ellipsis overflow-hidden text-nowrap'>{title.toUpperCase()} </span>
                 <span className='text-[16px] font-semibold text-[#986b6b]'>₹{rent}/day</span>
             </div>
-
-            <button
-                onClick={handleReviewsClick}
-                className='flex items-center gap-[5px] px-[8px] py-[4px] bg-[#f0f0f0] rounded-lg hover:bg-[gray] text-[18px]'
-            >
-                <FaComment className='text-[#666]' />
-                Reviews
-            </button>
 
         </div>
     )

@@ -65,10 +65,6 @@ const listingSchema = new mongoose.Schema({
         type: [String],
         default: []
     },
-    reviews:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'review'
-    }],
 
 },{timestamps:true})
 
